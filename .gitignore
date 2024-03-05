@@ -1,0 +1,39 @@
+# ignore ALL .log files
+*.log
+
+# ignore ALL files in ANY directory named temp
+# .git/
+.idea/
+.vscode/
+results/
+__pycache__/
+.DS_Store
+seq*/
+rec_data/
+__pycache__
+not_used/
+not_save_cls_weights/
+generated_results/
+rec_data/
+scan_performance_hist/
+wandb/
+seq*/
+1-*/
+2-*/
+reg_data_CT/
+reg_data_MRI-brain/
+log/
+*.sh
+sh/
+*.png
+*.mha
+*.csv
+/new_data_process/check_data_volume
+test_models*/
+comp_isbi*/
+*.npy
+plot_scan_trajactory/
+
+
+
+
