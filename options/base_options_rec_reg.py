@@ -13,7 +13,6 @@ class BaseOptions():
         self.parser.add_argument('--multi_gpu', type=bool,default=False,help='whether use multi gpus')
         self.parser.add_argument('--gpu_ids',type=str,default='0',help='gpu id: e.g., 0,1,2...')
         self.parser.add_argument('--RESAMPLE_FACTOR', type=int,default=4,help='resize of the original image')
-        # self.parser.add_argument('--FILENAME_FRAMES', type=str, default='/home/qi/public_data/forearm_US_large_dataset/frames_res4.h5',help='dataroot of training')
 
         # self.parser.add_argument('--FILENAME_FRAME_FEATS', type=str, default=os.path.join(os.path.expanduser("~"), "workspace", 'frame_feats_res{}'.format(4)+".h5"),help='dataroot of features of frames extracted by using pretrained model')
 

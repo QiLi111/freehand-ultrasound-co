@@ -18,13 +18,13 @@ os.environ["CUDA_VISIBLE_DEVICES"] = '0'
 
 FLAG_SCANFILE = False
 
-DIR_RAW = os.path.join(os.path.expanduser("~"), "/raid/candi/Qi/public_data/forearm_US_large_dataset")
+DIR_RAW = os.path.join(os.path.expanduser("~"), "/public_data/forearm_US_large_dataset")
 NUM_SCANS = 12
 RESAMPLE_FACTOR = 4
-PATH_SAVE = os.path.join(os.path.expanduser("~"), "/raid/candi/Qi/public_data/forearm_US_large_dataset")
+PATH_SAVE = os.path.join(os.path.expanduser("~"), "/public_data/forearm_US_large_dataset")
 DELAY_TFORM = 4  # delayed tform from temporal calibration
 start_idx = 100
-FILENAME_CALIB= "/raid/candi/Qi/public_data/forearm_US_large_dataset/calib_matrix.csv"
+FILENAME_CALIB= "/public_data/forearm_US_large_dataset/calib_matrix.csv"
 
 
 # seperate protocol into perpencular and paralar 

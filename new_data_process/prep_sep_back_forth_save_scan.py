@@ -23,14 +23,14 @@ os.environ["CUDA_VISIBLE_DEVICES"] = '1'
 
 FLAG_SCANFILE = True
 
-DIR_RAW = os.path.join(os.path.expanduser("~"), "/raid/Qi/public_data/forearm_US_large_dataset/data_size60")
+DIR_RAW = os.path.join(os.path.expanduser("~"), "/public_data/forearm_US_large_dataset/data_size60")
 NUM_SCANS = 12
 NUM_SCANS_rotate=2
 RESAMPLE_FACTOR = 4
-PATH_SAVE = os.path.join(os.path.expanduser("~"), "/raid/Qi/public_data/forearm_US_large_dataset/data_size60")
+PATH_SAVE = os.path.join(os.path.expanduser("~"), "/public_data/forearm_US_large_dataset/data_size60")
 DELAY_TFORM = 4  # delayed tform from temporal calibration
 start_idx = 100
-FILENAME_CALIB= "/raid/Qi/public_data/forearm_US_large_dataset/calib_matrix.csv"
+FILENAME_CALIB= "/public_data/forearm_US_large_dataset/calib_matrix.csv"
 
 
 # fh5_frames_forth = h5py.File(os.path.join(PATH_SAVE,'frames_res{}_forth'.format(RESAMPLE_FACTOR)+".h5"),'a')

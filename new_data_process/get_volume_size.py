@@ -5,9 +5,9 @@ import torch,sys
 from torch.utils.tensorboard import SummaryWriter
 import torch.nn as nn
 from pathlib import Path
-sys.path.append("/raid/candi/Qi/freehand-ultrasound")
-sys.path.append("/raid/candi/Qi/freehand-ultrasound")
-sys.path.append("/raid/candi/Qi/freehand-ultrasound/new_data_process")
+sys.path.append("/freehand-ultrasound")
+sys.path.append("/freehand-ultrasound")
+sys.path.append("/freehand-ultrasound/new_data_process")
 
 from loader_isbi_large_dataset import SSFrameDataset
 from options.train_options_rec_reg import TrainOptions

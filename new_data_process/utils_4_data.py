@@ -13,8 +13,8 @@ import torch
 from scipy.stats.stats import pearsonr   
 from scipy.stats import linregress
 
-sys.path.append("/raid/candi/Qi/freehand-ultrasound")
-sys.path.append("/raid/candi/Qi/freehand-ultrasound")
+sys.path.append("/freehand-ultrasound")
+sys.path.append("/freehand-ultrasound")
 
 from transform import LabelTransform
 
@@ -300,7 +300,7 @@ class PlotScan():
         
         plt.savefig(scan_name)
         if croped:
-            plt.savefig('/raid/Qi/public_data/forearm_US_large_dataset/check_volume/'+("_").join(saved_folder_name[-35:].split("/"))+'_first_img_red_last_img_green_croped.png')
+            plt.savefig('/public_data/forearm_US_large_dataset/check_volume/'+("_").join(saved_folder_name[-35:].split("/"))+'_first_img_red_last_img_green_croped.png')
 
         plt.close(fig)
 
@@ -678,7 +678,7 @@ class PlotScan():
 
         else:
             fig.savefig(saved_folder_name+'/'+'Distance_between_two_imgs.png')
-            fig.savefig('/raid/Qi/public_data/forearm_US_large_dataset/check_volume/'+("_").join(saved_folder_name[-35:].split("/"))+'Distance_between_two_imgs.png')
+            fig.savefig('/public_data/forearm_US_large_dataset/check_volume/'+("_").join(saved_folder_name[-35:].split("/"))+'Distance_between_two_imgs.png')
 
 
         plt.close(fig)
@@ -747,7 +747,7 @@ class PlotScan():
             fig2.savefig(saved_folder_name+'/'+'Distance_from_the_first_img_croped.png')
         else:
             fig2.savefig(saved_folder_name+'/'+'Distance_from_the_first_img.png')
-            fig2.savefig('/raid/Qi/public_data/forearm_US_large_dataset/check_volume/'+("_").join(saved_folder_name[-35:].split("/"))+'Distance_from_the_first_img.png')
+            fig2.savefig('/public_data/forearm_US_large_dataset/check_volume/'+("_").join(saved_folder_name[-35:].split("/"))+'Distance_from_the_first_img.png')
 
         plt.close(fig2)
 

@@ -6,7 +6,7 @@ from matplotlib import cm
 import torch
 import pickle
 
-Path = '/raid/candi/Qi/freehand-ultrasound/plot_scan_trajactory'
+Path = '/freehand-ultrasound/plot_scan_trajactory'
 gt_fd = 'gt_all'
 frame_fd = 'frame_all'
 figs = 'figs'

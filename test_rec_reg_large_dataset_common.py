@@ -52,7 +52,6 @@ dset_train = dset_train_list[0]+dset_train_list[1]#+dset_train_list[2]
 dset_val = dset_val+dset_train_list[2]
 print('using %s'%opt.h5_file_name)
 
-# opt.SAVE_PATH = '/raid/candi/Qi/tracked-ultrasound/seq_len100__efficientnet_b1__lr0.0001__scan_len108__output_parameter__Loss_MSE_points__forth__optimised_coord'
 
 
 

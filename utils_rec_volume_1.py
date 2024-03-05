@@ -488,7 +488,6 @@ class Train_Rec_Reg_Model():
 
         
         
-        # self.PATH_SAVE = os.path.join(os.path.expanduser("~"), "/raid/candi/Qi/public_data/forearm_US_large_dataset")
 
         # self.fh5_frames_train_path = os.path.join(self.PATH_SAVE,'data4reg_seqlen'+str(self.opt.NUM_SAMPLES)+'_'+self.opt.Conv_Coords+'_train.h5')
         # self.fh5_frames_val_path = os.path.join(self.PATH_SAVE,'data4reg_seqlen'+str(self.opt.NUM_SAMPLES)+'_'+self.opt.Conv_Coords+'_val.h5')

@@ -13,12 +13,12 @@ class BaseOptions():
         self.parser.add_argument('--multi_gpu', type=bool,default=False,help='whether use multi gpus')
         self.parser.add_argument('--gpu_ids',type=str,default='1',help='gpu id: e.g., 0,1,2...')
         self.parser.add_argument('--RESAMPLE_FACTOR', type=int,default=4,help='resize of the original image')
-        # self.parser.add_argument('--FILENAME_FRAMES', type=str, default='/home/qi/public_data/forearm_US_large_dataset/frames_res4.h5',help='dataroot of training')
+        # self.parser.add_argument('--FILENAME_FRAMES', type=str, default='/public_data/forearm_US_large_dataset/frames_res4.h5',help='dataroot of training')
 
         # self.parser.add_argument('--FILENAME_FRAME_FEATS', type=str, default=os.path.join(os.path.expanduser("~"), "workspace", 'frame_feats_res{}'.format(4)+".h5"),help='dataroot of features of frames extracted by using pretrained model')
 
         self.parser.add_argument('--SAVE_PATH', type=str, default='results',help='foldername of saving path')
-        self.parser.add_argument('--DATA_PATH', type=str, default='/home/qi/public_data/forearm_US_large_dataset', help='foldername of saving path')
+        self.parser.add_argument('--DATA_PATH', type=str, default='/public_data/forearm_US_large_dataset', help='foldername of saving path')
 
         self.initialized = True
 

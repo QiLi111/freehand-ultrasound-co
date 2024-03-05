@@ -18,7 +18,7 @@ class BaseOptions():
         # self.parser.add_argument('--FILENAME_FRAME_FEATS', type=str, default=os.path.join(os.path.expanduser("~"), "workspace", 'frame_feats_res{}'.format(4)+".h5"),help='dataroot of features of frames extracted by using pretrained model')
 
         self.parser.add_argument('--SAVE_PATH', type=str, default='results', help='foldername of saving path')
-        self.parser.add_argument('--DATA_PATH', type=str, default='/raid/candi/Qi/public_data', help='foldername of saving path')
+        self.parser.add_argument('--DATA_PATH', type=str, default='/public_data', help='foldername of saving path')
 
         self.initialized = True
 

@@ -152,7 +152,7 @@ class SSFrameDataset():  # Subject-Scan frame loader
             obj = json.load(f)
             return SSFrameDataset(
                 min_scan_len = obj['min_scan_len'],
-                filename_h5    = '/home/qi/workspace/frames_res4_reverse.h5',#obj['filename'],
+                filename_h5    = obj['filename'],
                 indices_in_use = [tuple(ids) for ids in obj['indices_in_use']], # convert to tuples from json string
                 num_samples    = obj['num_samples'] if num_samples is None else num_samples,
                 sample_range   = obj['sample_range'],
@@ -163,7 +163,7 @@ class SSFrameDataset():  # Subject-Scan frame loader
             obj = json.load(f)
             return SSFrameDataset(
                 min_scan_len = obj['min_scan_len'],
-                filename_h5    = '/home/qi/workspace/frames_res4_downsample_average_speed_9.h5',#obj['filename'],
+                filename_h5    = '/workspace/frames_res4_downsample_average_speed_9.h5',#obj['filename'],
                 indices_in_use = [tuple(ids) for ids in obj['indices_in_use']], # convert to tuples from json string
                 num_samples    = obj['num_samples'] if num_samples is None else num_samples,
                 sample_range   = obj['sample_range'],

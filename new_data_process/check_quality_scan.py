@@ -5,7 +5,7 @@ import numpy as np
 import SimpleITK as sitk
 import cv2,os,sys,csv
 
-sys.path.append("/raid/Qi/freehand-ultrasound")
+sys.path.append("/freehand-ultrasound")
 from utilits_grid_data import *
 from data.calib import read_calib_matrices
 from transform import LabelTransform
@@ -13,7 +13,7 @@ from utils import pair_samples, reference_image_points
 
 from utils_rec_reg import *
 # load scan
-PATH_SAVE = os.path.join(os.path.expanduser("~"), "/raid/Qi/public_data/forearm_US_large_dataset/data_size59")
+PATH_SAVE = os.path.join(os.path.expanduser("~"), "/public_data/forearm_US_large_dataset/data_size59")
 folder = '041'
 file_name1 = 'TrackedImageSequence_20231128_091434.mha'
 file_name2 = 'TrackedImageSequence_20231128_091756.mha'

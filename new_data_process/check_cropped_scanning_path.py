@@ -5,7 +5,7 @@ import h5py,csv
 import matplotlib.pyplot as plt
 
 
-DIR_RAW = os.path.join(os.path.expanduser("~"), "/raid/Qi/public_data/forearm_US_large_dataset/data_size60")
+DIR_RAW = os.path.join(os.path.expanduser("~"), "/public_data/forearm_US_large_dataset/data_size60")
 
 folders_subject = [f for f in os.listdir(DIR_RAW) if os.path.isdir(os.path.join(DIR_RAW, f))]
 folders_subject = sorted(folders_subject, key=lambda x: int(x), reverse=False)
