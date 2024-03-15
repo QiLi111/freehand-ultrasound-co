@@ -7,7 +7,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch
 from torch.nn.modules.utils import _pair
-from transform import  PredictionTransform
+from utils.transform import  PredictionTransform
 # import resnext
 
 def build_model(opt,in_frames, pred_dim, label_dim, image_points, tform_calib, tform_calib_R_T):
@@ -75,29 +75,7 @@ def build_model(opt,in_frames, pred_dim, label_dim, image_points, tform_calib, t
             in_features   = model.fc.in_features,
             out_features  = pred_dim
         )
-
-
-    elif opt.model_name == "LSTM_E":
-        model = EncoderRNN_through_time(
-            in_frames = in_frames,
-            dim_feats = 1000,
-            dim_hidden = 1024,
-            n_layers = 1,
-            bidirectional=False,
-            input_dropout_p=0.2,
-            rnn_cell='lstm',
-            rnn_dropout_p=0.5,
-            pred_dim = pred_dim)
-    elif opt.model_name == "DCLNet50":
-        model = resnext.resnet50(sample_size=2, sample_duration=16, cardinality=32,num_classes=pred_dim,input_ch=1)
-        # model.conv1 = nn.Conv3d(in_channels=1, out_channels=64, kernel_size=(3, 7, 7),
-        #                            stride=(1, 2, 2), padding=(1, 3, 3), bias=False)
-
-        # num_ftrs = model.fc.in_features
-        # model.fc = nn.Linear(num_ftrs, pred_dim)
-    elif opt.model_name == "DCLNet101":
-        model = resnext.resnet101(sample_size=2, sample_duration=16, cardinality=32,num_classes=pred_dim,input_ch=1)
-
+ 
     else:
         raise("Unknown model.")
     

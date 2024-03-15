@@ -11,6 +11,8 @@ seq*/
 log/
 *.sh
 sh/
+data/prep_sep_back_forth*
+models_all/
 
 
 

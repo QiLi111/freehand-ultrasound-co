@@ -12,13 +12,13 @@
 from __future__ import annotations
 
 import inspect
-import sys
+import sys,os
 import warnings
 from collections.abc import Callable
 from functools import wraps
 from types import FunctionType
 from typing import Any, TypeVar
-
+sys.path.append(os.getcwd()+'/utils')
 from monai.utils.module import version_leq
 
 from .. import __version__

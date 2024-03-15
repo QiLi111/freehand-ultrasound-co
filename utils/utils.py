@@ -13,8 +13,8 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from matplotlib import cm
 from mpl_toolkits.axes_grid1.axes_divider import make_axes_locatable
-from loss import PointDistance
-from loader import SSFrameDataset
+from utils.loss import PointDistance
+from utils.loader import SSFrameDataset
 import numpy as np
 from sklearn.metrics import f1_score,accuracy_score
 

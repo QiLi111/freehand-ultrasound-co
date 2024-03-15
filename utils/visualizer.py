@@ -5,14 +5,15 @@ from matplotlib import pyplot as plt
 import torch
 import numpy as np
 import torch.nn.functional as F
-from network import build_model
+from utils.network import build_model
 from data.calib import read_calib_matrices
-from transform import LabelTransform, PredictionTransform
+from utils.transform import LabelTransform, PredictionTransform
 from utils.utils import reference_image_points
 
 from utils.utilits_grid_data import *
 from utils.utils_meta import *
-
+import sys
+sys.path.append(os.getcwd()+'/utils')
 # from monai.networks.nets.voxelmorph import VoxelMorphUNet, VoxelMorph
 from monai.networks.nets import VoxelMorph
 

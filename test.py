@@ -11,6 +11,7 @@ from utils.utils import str2list
 
 from utils.utilits_grid_data import *
 from utils.utils_meta import *
+sys.path.append(os.getcwd()+'/utils')
 
 
 opt = TrainOptions().parse()
@@ -27,9 +28,9 @@ opt.FILENAME_VAL=opt.FILENAME_VAL+'_seqlen'+str(opt.NUM_SAMPLES)+'_'+opt.split_t
 opt.FILENAME_TEST=opt.FILENAME_TEST+'_seqlen'+str(opt.NUM_SAMPLES)+'_'+opt.split_type+'_'+opt.train_set+'.json'
 opt.FILENAME_TRAIN=[opt.FILENAME_TRAIN[i]+'_seqlen'+str(opt.NUM_SAMPLES)+'_'+opt.split_type+'_'+opt.train_set+'.json' for i in range(len(opt.FILENAME_TRAIN))]
 
-dset_val = SSFrameDataset.read_json(Path(os.getcwd()).parent.absolute().as_posix()+opt.DATA_PATH,opt.FILENAME_VAL,opt.h5_file_name,num_samples = -1)
-dset_test = SSFrameDataset.read_json(Path(os.getcwd()).parent.absolute().as_posix()+opt.DATA_PATH,opt.FILENAME_TEST,opt.h5_file_name,num_samples = -1)
-dset_train_list = [SSFrameDataset.read_json(Path(os.getcwd()).parent.absolute().as_posix()+opt.DATA_PATH,opt.FILENAME_TRAIN[i],opt.h5_file_name,num_samples = -1) for i in range(len(opt.FILENAME_TRAIN))]
+dset_val = SSFrameDataset.read_json(Path(os.getcwd()).as_posix()+opt.DATA_PATH,opt.FILENAME_VAL,opt.h5_file_name,num_samples = -1)
+dset_test = SSFrameDataset.read_json(Path(os.getcwd()).as_posix()+opt.DATA_PATH,opt.FILENAME_TEST,opt.h5_file_name,num_samples = -1)
+dset_train_list = [SSFrameDataset.read_json(Path(os.getcwd()).as_posix()+opt.DATA_PATH,opt.FILENAME_TRAIN[i],opt.h5_file_name,num_samples = -1) for i in range(len(opt.FILENAME_TRAIN))]
 
 dset_train = dset_train_list[0]+dset_train_list[1]+dset_train_list[2]
 # dset_val = dset_val+dset_train_list[2]

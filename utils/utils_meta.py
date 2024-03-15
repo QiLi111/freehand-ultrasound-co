@@ -8,15 +8,17 @@ import torch.nn as nn
 import torch
 from torch.nn import MSELoss
 import torch.nn as nn
-from loader import SSFrameDataset
-from network import build_model
+from utils.loader import SSFrameDataset
+from utils.network import build_model
 from data.calib import read_calib_matrices
-from transform import LabelTransform, PredictionTransform
+from utils.transform import LabelTransform, PredictionTransform
 from utils.utils_ori import reference_image_points, compute_plane_normal,angle_between_planes
 from options.train_options import TrainOptions
 from utils.utils_ori import add_scalars_rec_volume,add_scalars_reg,add_scalars_wrap_dist,add_scalars_reg_T
 from utils.utilits_grid_data import *
-from funcs import *
+from utils.funcs import *
+import sys
+sys.path.append(os.getcwd()+'/utils')
 
 # from monai.networks.nets.voxelmorph import VoxelMorphUNet, VoxelMorph
 from monai.networks.nets import VoxelMorph

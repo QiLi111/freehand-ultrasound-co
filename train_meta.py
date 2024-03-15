@@ -4,10 +4,12 @@ import os
 import torch
 from torch.utils.tensorboard import SummaryWriter
 from pathlib import Path
-from .utils.loader import SSFrameDataset
+from utils.loader import SSFrameDataset
 from options.train_options import TrainOptions
-from .utils.utilits_grid_data import *
-from .utils.utils_meta import *
+from utils.utilits_grid_data import *
+from utils.utils_meta import *
+import sys
+sys.path.append(os.getcwd()+'/utils')
 
 opt = TrainOptions().parse()
 writer = SummaryWriter(os.path.join(opt.SAVE_PATH))
@@ -20,9 +22,9 @@ opt.FILENAME_VAL=opt.FILENAME_VAL+'_seqlen'+str(opt.NUM_SAMPLES)+'_'+opt.split_t
 opt.FILENAME_TEST=opt.FILENAME_TEST+'_seqlen'+str(opt.NUM_SAMPLES)+'_'+opt.split_type+'_'+opt.train_set+'.json'
 opt.FILENAME_TRAIN=[opt.FILENAME_TRAIN[i]+'_seqlen'+str(opt.NUM_SAMPLES)+'_'+opt.split_type+'_'+opt.train_set+'.json' for i in range(len(opt.FILENAME_TRAIN))]
 
-dset_val = SSFrameDataset.read_json(Path(os.getcwd()).parent.absolute().as_posix()+opt.DATA_PATH,opt.FILENAME_VAL,opt.h5_file_name)
-dset_test = SSFrameDataset.read_json(Path(os.getcwd()).parent.absolute().as_posix()+opt.DATA_PATH,opt.FILENAME_TEST,opt.h5_file_name)
-dset_train_list = [SSFrameDataset.read_json(Path(os.getcwd()).parent.absolute().as_posix()+opt.DATA_PATH,opt.FILENAME_TRAIN[i],opt.h5_file_name) for i in range(len(opt.FILENAME_TRAIN))]
+dset_val = SSFrameDataset.read_json(Path(os.getcwd()).as_posix()+opt.DATA_PATH,opt.FILENAME_VAL,opt.h5_file_name)
+dset_test = SSFrameDataset.read_json(Path(os.getcwd()).as_posix()+opt.DATA_PATH,opt.FILENAME_TEST,opt.h5_file_name)
+dset_train_list = [SSFrameDataset.read_json(Path(os.getcwd()).as_posix()+opt.DATA_PATH,opt.FILENAME_TRAIN[i],opt.h5_file_name) for i in range(len(opt.FILENAME_TRAIN))]
 dset_train = dset_train_list[0]+dset_train_list[1]
 dset_val = dset_val+dset_train_list[2]
 print('using %s'%opt.h5_file_name)

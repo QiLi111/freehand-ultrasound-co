@@ -14,7 +14,7 @@ class TrainOptions(BaseOptions):
         self.parser.add_argument('--MIN_SCAN_LEN', type=int, default=108,help='scan length that greater than this value can be used in training and val')
         self.parser.add_argument('--train_set', type=str, default='forth',help='loop: all data in a h5 file; forth: only forth data; back: only back data; forth_back: forth and back data seperatly')
         self.parser.add_argument('--split_type', type=str, default='sub',help='sub: split dataset on subject level; scan: split dataset on scan level')
-        self.parser.add_argument('--Loss_type', type=str, default='wraped',help='MSE_points: MSE loss on points;\
+        self.parser.add_argument('--Loss_type', type=str, default='rec_reg',help='MSE_points: MSE loss on points;\
                                   Plane_norm: MSE loss and Loss over the norm of plane;\
                                   reg: only regietsrtion loss; rec_reg: reconstruction loss and registration loss;\
                                   rec_volume: reconstruction loss and volume loss; \
@@ -32,8 +32,8 @@ class TrainOptions(BaseOptions):
         self.parser.add_argument('--MAXNUM_PAIRS', type=int,default=50,help='maximum pairs of transformations to save to scalar')
         self.parser.add_argument('--retain', type=bool,default=False,help='whether load a pretrained model')
         self.parser.add_argument('--retain_epoch', type=str,default='00000000',help='whether load a pretrained model: {0: train from sctrach; a number, e.g., 1000, train from epoch 1000}')
-        self.parser.add_argument('--MINIBATCH_SIZE_rec', type=int,default=32,help='input batch size for reconstruction network')
-        self.parser.add_argument('--MINIBATCH_SIZE_reg', type=int,default=32,help='input batch size for registartion network')
+        self.parser.add_argument('--MINIBATCH_SIZE_rec', type=int,default=1,help='input batch size for reconstruction network')
+        self.parser.add_argument('--MINIBATCH_SIZE_reg', type=int,default=1,help='input batch size for registartion network')
 
         self.parser.add_argument('--LEARNING_RATE_rec',type=float,default=1e-4,help='learing rate for reconstruction network')
         self.parser.add_argument('--LEARNING_RATE_reg',type=float,default=1e-4,help='learing rate for registartion network')
@@ -41,8 +41,8 @@ class TrainOptions(BaseOptions):
         self.parser.add_argument('--NUM_EPOCHS',type =int,default=int(1e6),help='# of iter to lin')
         self.parser.add_argument('--max_rec_epoch_each_interation',type =int,default=int(2),help='# maxmum epoch to train rec or reg in each interation')
         self.parser.add_argument('--max_inter_rec_reg',type =int,default=int(500),help='# maxmum interation for training rec-reg models')
-        self.parser.add_argument('--inter',type =str,default='nointer',help='nointer/iteratively: iteratively or not ')
-        self.parser.add_argument('--meta',type =str,default='nonmeta',help='meta: use validation to train registration')
+        self.parser.add_argument('--inter',type =str,default='iteratively',help='nointer/iteratively: iteratively or not ')
+        self.parser.add_argument('--meta',type =str,default='meta',help='meta: use validation to train registration')
         self.parser.add_argument('--initial',type =str,default='InitialHalf',help='noninitial/InitialBest/InitialHalf: ')
         self.parser.add_argument('--BatchNorm',type =str,default='BNoff',help='BNoff/BNon: turn off batchnorm or not ')
 

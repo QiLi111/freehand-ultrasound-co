@@ -12,8 +12,8 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from matplotlib import cm
 from mpl_toolkits.axes_grid1.axes_divider import make_axes_locatable
-from loss import PointDistance
-from loader import SSFrameDataset
+from utils.loss import PointDistance
+from utils.loader import SSFrameDataset
 
 
 def pair_samples(num_samples, num_pred, single_interval):
@@ -79,32 +79,6 @@ def reference_image_points(image_size, density=2):
     
     return image_points
 
-
-def reference_image_points_1(image_size, density=2):
-    """
-    :param image_size: (x, y), used for defining default grid image_points
-    :param density: (x, y), point sample density in each of x and y, default n=2
-    """
-    if isinstance(density,int):
-        density=(density,density)
-
-    # image_points = torch.cartesian_prod(
-    #     torch.linspace(-image_size[0]/2,image_size[0]/2,density[0]),
-    #     torch.linspace(-image_size[1]/2,image_size[1]/2,density[1])
-    #     ).t()  # transpose to 2-by-n
-
-    image_points = torch.cartesian_prod(
-        torch.linspace(0, image_size[0]-1 , density[0]),
-        torch.linspace(0, image_size[1]-1, density[1])
-    ).t()
-    
-    image_points = torch.cat([
-        image_points, 
-        torch.zeros(1,image_points.shape[1])*image_size[0]/2,
-        torch.ones(1,image_points.shape[1])
-        ], axis=0)
-    
-    return image_points
 
 
 
@@ -287,87 +261,7 @@ def save_best_network_reg(opt,VoxelMorph_net, epoch_label, running_loss_val, val
 
     return val_loss_min, count_non_improved_loss
 
-def get_interval(opt, data_pairs):
-    if opt.NUM_SAMPLES == 7 and opt.SAMPLE_RANGE == 7 and opt.NUM_PRED == 6 :
-        interval_1 = sample_adjacent_pair(start=0, step=2, data_pairs=data_pairs)
-        interval_2 = sample_adjacent_pair(start=1, step=3, data_pairs=data_pairs)[0::2]
-        interval_3 = sample_adjacent_pair(start=3, step=4, data_pairs=data_pairs)[0::3]
-        interval_6 = sample_adjacent_pair(start=15, step=7, data_pairs=data_pairs)[0::6]
 
-        interval = {'0': interval_1, '1': interval_2, '2': interval_3, '3': interval_6}
-
-        # if opt.single_interval == 1:
-        #     interval_1 = sample_adjacent_pair(start=0, step=1, data_pairs=data_pairs)
-        #     interval_2 = sample_adjacent_pair(start=0, step=2, data_pairs=data_pairs)
-        #     interval_3 = sample_adjacent_pair(start=0, step=3, data_pairs=data_pairs)
-        #     interval_6 = sample_adjacent_pair(start=0, step=6, data_pairs=data_pairs)
-        #     interval = {'0': interval_1, '1': interval_2, '2': interval_3, '3': interval_6}
-        #
-        # if opt.single_interval == 2:
-        #     interval_2 = sample_adjacent_pair(start=0, step=1, data_pairs=data_pairs)
-        #     interval_4 = sample_adjacent_pair(start=0, step=2, data_pairs=data_pairs)
-        #     interval_6 = sample_adjacent_pair(start=0, step=3, data_pairs=data_pairs)
-        #     interval = {'0': interval_2, '1': interval_4, '2': interval_6}
-        #
-        # if opt.single_interval == 3:
-        #     interval_3 = sample_adjacent_pair(start=0, step=1, data_pairs=data_pairs)
-        #     interval_6 = sample_adjacent_pair(start=0, step=2, data_pairs=data_pairs)
-        #     interval = {'0': interval_3, '1': interval_6}
-
-
-    elif opt.NUM_SAMPLES == 36 and opt.SAMPLE_RANGE == 36 and opt.NUM_PRED == 35:
-
-        interval_1 = sample_adjacent_pair(start=0, step=2, data_pairs=data_pairs)
-        interval_5 = sample_adjacent_pair(start=10, step=6, data_pairs=data_pairs)[0::5]
-        interval_7 = sample_adjacent_pair(start=21, step=8, data_pairs=data_pairs)[0::7]
-        interval_35 = sample_adjacent_pair(start=595, step=36, data_pairs=data_pairs)[0::35]
-
-        interval = {'0': interval_1, '1': interval_5, '2': interval_7, '3': interval_35}
-
-    elif opt.NUM_SAMPLES == 97 and opt.SAMPLE_RANGE == 97 and opt.NUM_PRED == 96:
-
-        interval_1 = sample_adjacent_pair(start=0, step=2, data_pairs=data_pairs)
-        interval_2 = sample_adjacent_pair(start=1, step=3, data_pairs=data_pairs)[0::2]
-        interval_3 = sample_adjacent_pair(start=3, step=4, data_pairs=data_pairs)[0::3]
-        interval_4 = sample_adjacent_pair(start=6, step=5, data_pairs=data_pairs)[0::4]
-        interval_6 = sample_adjacent_pair(start=15, step=7, data_pairs=data_pairs)[0::6]
-        interval_8 = sample_adjacent_pair(start=28, step=9, data_pairs=data_pairs)[0::8]
-        interval_12 = sample_adjacent_pair(start=66, step=13, data_pairs=data_pairs)[0::12]
-        interval_16 = sample_adjacent_pair(start=120, step=17, data_pairs=data_pairs)[0::16]
-        interval_24 = sample_adjacent_pair(start=276, step=25, data_pairs=data_pairs)[0::24]
-        interval_32 = sample_adjacent_pair(start=496, step=33, data_pairs=data_pairs)[0::32]
-        interval_48 = sample_adjacent_pair(start=1128, step=49, data_pairs=data_pairs)[0::48]
-        interval_96 = sample_adjacent_pair(start=4560, step=97, data_pairs=data_pairs)[0::96]
-
-        interval = {'0': interval_1, '1': interval_2, '2': interval_3, '3': interval_4,
-                    '4': interval_6, '5': interval_8, '6': interval_12, '7': interval_16,
-                    '8': interval_24, '9': interval_32, '10': interval_48, '11': interval_96
-                    }
-    elif opt.NUM_SAMPLES == 30 and opt.SAMPLE_RANGE == 30 and opt.NUM_PRED == 29:
-        added_pairs = torch.tensor([[0, 29], [0, 15], [15, 29]])
-        # find the interval index
-        saved_flag = []
-        for j in range(len(added_pairs)):
-            for i, e in enumerate(data_pairs.cpu()):
-                if (e == added_pairs[j, :]).all():
-                    saved_flag.append(i)
-
-        interval= {'0': [saved_flag[0]],'1':[saved_flag[1],saved_flag[2]]}
-    elif opt.NUM_SAMPLES == 20 and opt.SAMPLE_RANGE == 20 and opt.NUM_PRED == 19:
-        added_pairs = torch.tensor([[0, 19], [0, 10], [10, 19]])
-        # find the interval index
-        saved_flag = []
-        for j in range(len(added_pairs)):
-            for i, e in enumerate(data_pairs.cpu()):
-                if (e == added_pairs[j, :]).all():
-                    saved_flag.append(i)
-
-        interval= {'0': [saved_flag[0]],'1':[saved_flag[1],saved_flag[2]]}
-
-
-    else:
-        interval = {'0': [0]}
-    return interval
 
 def sample_adjacent_pair(start, step, data_pairs):
     adjacent_pair = []

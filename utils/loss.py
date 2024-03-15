@@ -1,7 +1,7 @@
 
 import torch
-from transform import TransformAccumulation
-from transform import LabelTransform
+from utils.transform import TransformAccumulation
+from utils.transform import LabelTransform
 import numpy as np
 from itertools import combinations
 # TBD
