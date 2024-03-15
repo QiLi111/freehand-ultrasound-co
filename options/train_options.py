@@ -43,7 +43,7 @@ class TrainOptions(BaseOptions):
         self.parser.add_argument('--max_inter_rec_reg',type =int,default=int(500),help='# maxmum interation for training rec-reg models')
         self.parser.add_argument('--inter',type =str,default='iteratively',help='nointer/iteratively: iteratively or not ')
         self.parser.add_argument('--meta',type =str,default='meta',help='meta: use validation to train registration')
-        self.parser.add_argument('--initial',type =str,default='InitialHalf',help='noninitial/InitialBest/InitialHalf: ')
+        self.parser.add_argument('--initial',type =str,default='noninitial',help='noninitial/InitialBest/InitialHalf: ')
         self.parser.add_argument('--BatchNorm',type =str,default='BNoff',help='BNoff/BNon: turn off batchnorm or not ')
 
         

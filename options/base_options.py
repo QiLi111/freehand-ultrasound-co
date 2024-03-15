@@ -1,6 +1,6 @@
 import argparse
 import os
-import torch
+import json
 
 
 class BaseOptions():
@@ -13,6 +13,7 @@ class BaseOptions():
         self.parser.add_argument('--multi_gpu', type=bool,default=False,help='whether use multi gpus')
         self.parser.add_argument('--gpu_ids',type=str,default='1',help='gpu id: e.g., 0,1,2...')
         self.parser.add_argument('--RESAMPLE_FACTOR', type=int,default=4,help='resize of the original image')
+        self.parser.add_argument('--config', type=str,default='config/config_ete.json',help='config file')
 
 
         self.parser.add_argument('--SAVE_PATH', type=str, default='results',help='foldername of saving path')
@@ -38,6 +39,11 @@ class BaseOptions():
         #     torch.cuda.set_device(self.opt.gpu_ids[0])
 
         args = vars(self.opt)
+        # update from config json
+        with open(self.opt.config) as f:
+            json_dict = json.load(f)
+
+        args.update(json_dict)
 
         print('----------Option----------')
         for k,v in sorted(args.items()):
@@ -107,7 +113,7 @@ class BaseOptions():
                 +'__'+str(self.opt.Conv_Coords)+'__'+str(self.opt.intepoletion_volume)\
                 +'__iteratively__meta'+'__'+str(self.opt.initial)+'__'+str(self.opt.BatchNorm)\
                 +'__bs_'+str(self.opt.MINIBATCH_SIZE_rec)+'__'+str(self.opt.img_pro_coord)\
-                +'__inc_reg_'+str(self.opt.in_ch_reg)+'__'+str(self.opt.ddf_dirc)+'__M_retrain'
+                +'__inc_reg_'+str(self.opt.in_ch_reg)+'__'+str(self.opt.ddf_dirc)+'__M'
 
 
 

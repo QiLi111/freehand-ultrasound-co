@@ -1,0 +1,9 @@
+{
+    "gpu_ids": "2",
+    "MINIBATCH_SIZE_rec": 1,
+    "MINIBATCH_SIZE_reg": 1,
+    "LEARNING_RATE_rec": 1e-4,
+    "LEARNING_RATE_reg": 1e-4,
+    "inter": "nointer",
+    "meta": "nonmeta"
+}
