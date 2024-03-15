@@ -13,7 +13,7 @@ conda config --add channels conda-forge && conda install mdanalysis && conda ins
 ## Data
 The data set used in this repository is sampled from the original data set used in the paper, and will update once the paper is accepeted.
 
-The example data set is stored in a `.h5` file, including train (6 scans), val (2 scans), and test (2 scans) sets. The following shows the data structure.
+The example data set is stored in a `.h5` file, including train (6 scans), val (2 scans), and test (2 scans) sets. The indices of samped scans are indicated by `.json` files. The following shows the data structure.
 ```
     scans_res4_forth.h5/
     │
@@ -22,7 +22,7 @@ The example data set is stored in a `.h5` file, including train (6 scans), val (
     ├── num_frames - number of frames in each scan
     ├── name_scan - scan protocol 
 
-    fold_XX_seqlenXXX_sub_forth/
+    fold_XX_seqlenXXX_sub_forth.json/
     │
     ├── indices_in_use - the indices of samped scans from the original whole data set
 ```
