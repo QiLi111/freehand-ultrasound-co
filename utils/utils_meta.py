@@ -240,28 +240,28 @@ class Train_Rec_Reg_Model():
                 self.dset_train,
                 batch_size=self.opt.MINIBATCH_SIZE_rec,
                 shuffle=True,
-                num_workers=8
+                num_workers=0
                 )
         
             self.train_loader_reg = torch.utils.data.DataLoader(
                 self.dset_train,
                 batch_size=self.opt.MINIBATCH_SIZE_reg,
                 shuffle=True,
-                num_workers=8
+                num_workers=0
                 )
 
             self.val_loader_rec = torch.utils.data.DataLoader(
                 self.dset_val,
                 batch_size=1, 
                 shuffle=True,
-                num_workers=8
+                num_workers=0
                 )
             
             self.val_loader_reg = torch.utils.data.DataLoader(
                 self.dset_val,
                 batch_size=1, 
                 shuffle=True,
-                num_workers=8
+                num_workers=0
                 )
 
         elif self.opt.meta == 'meta':
@@ -269,28 +269,28 @@ class Train_Rec_Reg_Model():
                 self.dset_train,
                 batch_size=self.opt.MINIBATCH_SIZE_rec,
                 shuffle=True,
-                num_workers=8
+                num_workers=0
                 )
             
             # self.train_loader_reg = torch.utils.data.DataLoader(
             #     self.dset_val,
             #     batch_size=self.opt.MINIBATCH_SIZE_reg,
             #     shuffle=True,
-            #     num_workers=8
+            #     num_workers=0
             #     )
 
             self.val_loader_rec = torch.utils.data.DataLoader(
                 self.dset_val,
                 batch_size=self.opt.MINIBATCH_SIZE_reg, 
                 shuffle=True,
-                num_workers=8
+                num_workers=0
                 )
             
             # self.val_loader_reg = torch.utils.data.DataLoader(
             #     self.dset_train,
             #     batch_size=1, 
             #     shuffle=True,
-            #     num_workers=8
+            #     num_workers=0
             #     )
 
 

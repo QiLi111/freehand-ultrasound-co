@@ -267,7 +267,7 @@ class Train_Rec_Reg_Model():
             self.dset_train,
             batch_size=self.opt.MINIBATCH_SIZE_rec,
             shuffle=True,
-            num_workers=8
+            num_workers=0
             )
         
             
@@ -276,7 +276,7 @@ class Train_Rec_Reg_Model():
             self.dset_val,
             batch_size=1, 
             shuffle=True,
-            num_workers=8
+            num_workers=0
             )
         
 
