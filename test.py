@@ -43,7 +43,7 @@ viridis = cm.get_cmap('viridis', 10)
 
 options = ['generate_reg_volume_data','reconstruction_vlume']
 
-test_folders = 'models_all'
+test_folders = 'models_all' # creat a new "models_all" folder, and move the generated folder after python trainXXX.py, into "models_all" folder
 csv_name = 'metrics.csv'
 fd_name_save = 'results'
 
