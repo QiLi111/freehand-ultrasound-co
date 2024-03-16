@@ -37,7 +37,7 @@ The two objectives, rigid transformations and nonrigid deformation, can be eithe
 
 * Meta training
     ``` bash
-    python3 python train_meta.py --config config/config_meta.json
+    python3 train_meta.py --config config/config_meta.json
     ``` 
 ## Test
 ``` bash
