@@ -822,7 +822,7 @@ class Visualizer_plot_volume():  # plot scan
         ax.plot_surface(gx, gy, gz, edgecolor='g', linewidth=1, alpha=0.2, antialiased=True, label='gt')#
         prex, prey, prez = prex.reshape(2, 2), prey.reshape(2, 2), prez.reshape(2, 2)
         ax.plot_surface(prex, prey, prez, edgecolor='r', linewidth=1, alpha=0.2, antialiased=True, label='pred')
-        ax.axis('equal')
+        # ax.axis('equal')
         ax.legend()
 
 
