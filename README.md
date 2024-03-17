@@ -17,7 +17,7 @@ The example data set is stored in a `.h5` file, including train (6 scans), val (
     scans_res4_forth.h5/
     │
     ├── /subXXX_framesXX - US frames in a scan
-    ├── /subXXX_tformsXX - associated transformations for each frame, from tracker space to optical camera space.
+    ├── /subXXX_tformsXX - associated transformations for each frame, from tracker space to optical camera space
     ├── num_frames - number of frames in each scan
     ├── name_scan - scan protocol 
 
