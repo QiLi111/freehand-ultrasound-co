@@ -6,6 +6,7 @@ This repository is the official implementation for "Nonrigid Reconstruction of F
 ## Install conda environment
 ``` bash
 conda create -n freehand-US python=3.9.13
+conda activate freehand-US
 pip install -r requirements.txt
 ``` 
 
