@@ -35,10 +35,6 @@ dset_train_list = [SSFrameDataset.read_json(Path(os.getcwd()).as_posix()+opt.DAT
 dset_train = dset_train_list[0]+dset_train_list[1]+dset_train_list[2]
 print('using %s'%opt.h5_file_name)
             
-saved_folder = opt.SAVE_PATH+'/'+ 'test_plotting'
-if not os.path.exists(saved_folder):
-    os.makedirs(saved_folder)
-
 
 train_rec_reg_model = Train_Rec_Reg_Model(opt = opt,
                         non_improve_maxmum = 1e10, 

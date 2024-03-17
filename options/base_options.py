@@ -117,7 +117,7 @@ class BaseOptions():
 
 
 
-        self.opt.SAVE_PATH = os.path.join(os.getcwd(),saved_results)
+        self.opt.SAVE_PATH = os.path.join(os.getcwd(),'models_all/'+saved_results)
         
         # if self.opt.split_type == 'scan':
         # if self.opt.train_set == 'loop':
@@ -143,10 +143,11 @@ class BaseOptions():
             os.makedirs(self.opt.SAVE_PATH)
         if not os.path.exists(os.path.join(self.opt.SAVE_PATH,'saved_model')):
             os.makedirs(os.path.join(self.opt.SAVE_PATH,'saved_model'))
-        if not os.path.exists(os.path.join(self.opt.SAVE_PATH,'train_results')):
-            os.makedirs(os.path.join(self.opt.SAVE_PATH,'train_results'))
-        if not os.path.exists(os.path.join(self.opt.SAVE_PATH, 'val_results')):
-            os.makedirs(os.path.join(self.opt.SAVE_PATH, 'val_results'))
+        # if not os.path.exists(os.path.join(self.opt.SAVE_PATH,'train_results')):
+        #     os.makedirs(os.path.join(self.opt.SAVE_PATH,'train_results'))
+        # if not os.path.exists(os.path.join(self.opt.SAVE_PATH, 'val_results')):
+        #     os.makedirs(os.path.join(self.opt.SAVE_PATH, 'val_results'))
+
 
         file_name = os.path.join(self.opt.SAVE_PATH,'config.txt')
         with open(file_name,'a') as opt_file:
