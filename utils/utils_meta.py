@@ -15,7 +15,7 @@ from utils.transform import LabelTransform, PredictionTransform
 from utils.utils_ori import reference_image_points, compute_plane_normal,angle_between_planes
 from options.train_options import TrainOptions
 from utils.utils_ori import add_scalars_rec_volume,add_scalars_reg,add_scalars_wrap_dist,add_scalars_reg_T
-from utils.utilits_grid_data import *
+from utils.utils_grid_data import *
 from utils.funcs import *
 import sys
 sys.path.append(os.getcwd()+'/utils')

@@ -9,7 +9,7 @@ from utils.loader import SSFrameDataset
 from options.train_options import TrainOptions
 from utils.utils import str2list
 
-from utils.utilits_grid_data import *
+from utils.utils_grid_data import *
 from utils.utils_meta import *
 sys.path.append(os.getcwd()+'/utils')
 

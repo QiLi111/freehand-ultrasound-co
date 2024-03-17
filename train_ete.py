@@ -10,7 +10,7 @@ from torch.utils.tensorboard import SummaryWriter
 from pathlib import Path
 from utils.loader import SSFrameDataset
 from options.train_options import TrainOptions
-from utils.utilits_grid_data import *
+from utils.utils_grid_data import *
 from utils.utils_ete import *
 
 sys.path.append(os.getcwd()+'/utils')

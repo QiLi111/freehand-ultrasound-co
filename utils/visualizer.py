@@ -10,7 +10,7 @@ from data.calib import read_calib_matrices
 from utils.transform import LabelTransform, PredictionTransform
 from utils.utils import reference_image_points
 
-from utils.utilits_grid_data import *
+from utils.utils_grid_data import *
 from utils.utils_meta import *
 import sys
 sys.path.append(os.getcwd()+'/utils')
