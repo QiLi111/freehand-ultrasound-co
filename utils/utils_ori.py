@@ -3,7 +3,7 @@ import torch
 import heapq
 import MDAnalysis.lib.transformations as MDA
 import numpy as np
-import pytorch3d.transforms
+# import pytorch3d.transforms
 import pandas as pd
 import os
 import json
@@ -113,29 +113,29 @@ def tran426_np(transform,seq= 'rzyx'):
 
     return parameter
 
-def tran624_tensor(parameter, seq = 'ZYX'):
-    '''
-    # for tensor use: 6 parameter --> 4*4 transformation matrix
-    # this can preserve grad in tensor which need to be backforward
-    :param parameter: tensor type, [6], angle_x, angle_y, angle_z, x, y, z
-    :param seq: e.g.,'XYZ'
-    :return: transform: 4*4 transformation matrix
-    '''
-    Rotation = pytorch3d.transforms.euler_angles_to_matrix(parameter[0:3], seq)
-    transform = torch.row_stack((torch.column_stack((Rotation, torch.t(parameter[3:6]))), torch.tensor([0, 0, 0, 1])))
+# def tran624_tensor(parameter, seq = 'ZYX'):
+#     '''
+#     # for tensor use: 6 parameter --> 4*4 transformation matrix
+#     # this can preserve grad in tensor which need to be backforward
+#     :param parameter: tensor type, [6], angle_x, angle_y, angle_z, x, y, z
+#     :param seq: e.g.,'XYZ'
+#     :return: transform: 4*4 transformation matrix
+#     '''
+#     Rotation = pytorch3d.transforms.euler_angles_to_matrix(parameter[0:3], seq)
+#     transform = torch.row_stack((torch.column_stack((Rotation, torch.t(parameter[3:6]))), torch.tensor([0, 0, 0, 1])))
 
-    return transform
+#     return transform
 
-def tran426_tensor(transform,seq = 'ZYX'):
-    '''
-    # this can preserve grad in tensor which need to be backforward
-    :param transform:tensor type, 4*4 transformation matrix
-    :param seq: e.g.,'XYZ'
-    :return: parameter: [6], angle_x, angle_y, angle_z, x, y, z
-    '''
-    Rotation = pytorch3d.transforms.matrix_to_euler_angles(transform[0:3, 0:3], seq)
-    parameter = torch.cat((Rotation, transform[0:3, 3]))
-    return parameter
+# def tran426_tensor(transform,seq = 'ZYX'):
+#     '''
+#     # this can preserve grad in tensor which need to be backforward
+#     :param transform:tensor type, 4*4 transformation matrix
+#     :param seq: e.g.,'XYZ'
+#     :return: parameter: [6], angle_x, angle_y, angle_z, x, y, z
+#     '''
+#     Rotation = pytorch3d.transforms.matrix_to_euler_angles(transform[0:3, 0:3], seq)
+#     parameter = torch.cat((Rotation, transform[0:3, 3]))
+#     return parameter
 
 def save_best_network(opt, model, epoch_label, running_loss_val, running_dist_val, val_loss_min, val_dist_min):
     '''

@@ -1,6 +1,6 @@
 
 import torch
-import pytorch3d.transforms
+# import pytorch3d.transforms
 from utils.rigid_transform_3D import rigid_transform_3D
 
 ''' Geometric transformation used in transforms:
@@ -107,11 +107,11 @@ class LabelTransform():
         return torch.matmul(tforms_world_to_tool0, tforms_tool1_to_world)  # tform_tool1_to_tool0
 
 
-    def to_parameters(self, tforms, tforms_inv):
-        _tforms = self.to_transform_t2t(tforms, tforms_inv)
-        Rotation = pytorch3d.transforms.matrix_to_euler_angles(_tforms[:,:,0:3, 0:3], 'ZYX')
-        params = torch.cat((Rotation, _tforms[:,:,0:3, 3]),2)
-        return params
+    # def to_parameters(self, tforms, tforms_inv):
+    #     _tforms = self.to_transform_t2t(tforms, tforms_inv)
+    #     Rotation = pytorch3d.transforms.matrix_to_euler_angles(_tforms[:,:,0:3, 0:3], 'ZYX')
+    #     params = torch.cat((Rotation, _tforms[:,:,0:3, 3]),2)
+    #     return params
 
 
 class PredictionTransform():
@@ -201,41 +201,41 @@ class PredictionTransform():
         preds = outputs.reshape((outputs.shape[0],self.num_pairs,-1))
         return self.call_function(preds)
 
-    def transform_to_parameter(self, _tforms):
-        last_rows = torch.cat([
-            torch.zeros_like(_tforms[..., 0])[..., None, None].expand(-1, -1, 1, 3),
-            torch.ones_like(_tforms[..., 0])[..., None, None]
-        ], axis=3)
-        _tforms = torch.cat((
-            _tforms.reshape(-1, self.num_pairs, 3, 4),
-            last_rows
-        ), axis=2)
-        Rotation = pytorch3d.transforms.matrix_to_euler_angles(_tforms[:, :, 0:3, 0:3], 'ZYX')
-        params = torch.cat((Rotation, _tforms[:, :, 0:3, 3]),2)
-        return params
+    # def transform_to_parameter(self, _tforms):
+    #     last_rows = torch.cat([
+    #         torch.zeros_like(_tforms[..., 0])[..., None, None].expand(-1, -1, 1, 3),
+    #         torch.ones_like(_tforms[..., 0])[..., None, None]
+    #     ], axis=3)
+    #     _tforms = torch.cat((
+    #         _tforms.reshape(-1, self.num_pairs, 3, 4),
+    #         last_rows
+    #     ), axis=2)
+    #     Rotation = pytorch3d.transforms.matrix_to_euler_angles(_tforms[:, :, 0:3, 0:3], 'ZYX')
+    #     params = torch.cat((Rotation, _tforms[:, :, 0:3, 3]),2)
+    #     return params
 
-    def point_to_parameter(self, pts):
-        # rigid_transform_3D(A, B) --> transformation from A to B
-        pts = pts.reshape(pts.shape[0],self.num_pairs,3,-1)
-        last_rows = torch.unsqueeze(torch.ones_like(pts[:,:,0,:]),2)
-        transf = torch.ones_like(pts)
-        pts = torch.cat((pts,last_rows), axis=2)
-        if self.in_image_coords:
-            pts = torch.matmul(self.tform_image_mm_to_tool[None,None,...], pts)  # tform_tool1_to_image0 (mm)
+    # def point_to_parameter(self, pts):
+    #     # rigid_transform_3D(A, B) --> transformation from A to B
+    #     pts = pts.reshape(pts.shape[0],self.num_pairs,3,-1)
+    #     last_rows = torch.unsqueeze(torch.ones_like(pts[:,:,0,:]),2)
+    #     transf = torch.ones_like(pts)
+    #     pts = torch.cat((pts,last_rows), axis=2)
+    #     if self.in_image_coords:
+    #         pts = torch.matmul(self.tform_image_mm_to_tool[None,None,...], pts)  # tform_tool1_to_image0 (mm)
         
-        # ret_R, ret_t = rigid_transform_3D(self.image_points_in_tool[0:3,:].repeat(pts.size()[0],pts.size()[1],1,1),pts[:,:,0:3,:])
+    #     # ret_R, ret_t = rigid_transform_3D(self.image_points_in_tool[0:3,:].repeat(pts.size()[0],pts.size()[1],1,1),pts[:,:,0:3,:])
 
         
-        for i in range(pts.size()[0]):
-            for j in range(pts.size()[1]):
+    #     for i in range(pts.size()[0]):
+    #         for j in range(pts.size()[1]):
                 
-                ret_R, ret_t = rigid_transform_3D(self.image_points_in_tool[0:3,:],pts[i,j,0:3,:])
-                transf[i,j,...] = torch.cat((ret_R,ret_t),1)
-        # ret_R, ret_t = rigid_transform_3D(self.image_points_in_tool[0:3,:].repeat(pts.size()[0],pts.size()[1],1,1),pts[:,:,0:3,:])
+    #             ret_R, ret_t = rigid_transform_3D(self.image_points_in_tool[0:3,:],pts[i,j,0:3,:])
+    #             transf[i,j,...] = torch.cat((ret_R,ret_t),1)
+    #     # ret_R, ret_t = rigid_transform_3D(self.image_points_in_tool[0:3,:].repeat(pts.size()[0],pts.size()[1],1,1),pts[:,:,0:3,:])
         
-        Rotation = pytorch3d.transforms.matrix_to_euler_angles(transf[:,:,0:3, 0:3], 'ZYX')
-        params = torch.cat((Rotation, transf[:,:,0:3, 3]),2)
-        return params
+    #     Rotation = pytorch3d.transforms.matrix_to_euler_angles(transf[:,:,0:3, 0:3], 'ZYX')
+    #     params = torch.cat((Rotation, transf[:,:,0:3, 3]),2)
+    #     return params
     
     def point_to_transform(self, pts):
         pts = pts.reshape(pts.shape[0],self.num_pairs,3,-1)
@@ -312,10 +312,10 @@ class PredictionTransform():
     
 
 
-    def quaternion_to_parameter(self,quaternion): 
-        params = pytorch3d.transforms.quaternion_to_axis_angle(quaternion[:,:,0:4])
-        params = torch.cat((params,quaternion[:,:,4:7]), axis=2)
-        return params
+    # def quaternion_to_parameter(self,quaternion): 
+    #     params = pytorch3d.transforms.quaternion_to_axis_angle(quaternion[:,:,0:4])
+    #     params = torch.cat((params,quaternion[:,:,4:7]), axis=2)
+    #     return params
     
     def quaternion_to_transform(self,quaternion): 
         params = self.quaternion_to_parameter(quaternion)
@@ -419,13 +419,13 @@ class TransformAccumulation:
 
 
 
-def Transform_to_Params(prev_tform_all_train):
+# def Transform_to_Params(prev_tform_all_train):
 
-    params = {}
-    for i in range(len(prev_tform_all_train)):
-        params[str(i)]= None
-    for i in range(len(prev_tform_all_train)):
-        Rotation = pytorch3d.transforms.matrix_to_euler_angles(prev_tform_all_train[str(i)][:, 0:3, 0:3], 'ZYX')
-        params[str(i)] = torch.cat((Rotation, prev_tform_all_train[str(i)][ :, 0:3, 3]),1)
+#     params = {}
+#     for i in range(len(prev_tform_all_train)):
+#         params[str(i)]= None
+#     for i in range(len(prev_tform_all_train)):
+#         Rotation = pytorch3d.transforms.matrix_to_euler_angles(prev_tform_all_train[str(i)][:, 0:3, 0:3], 'ZYX')
+#         params[str(i)] = torch.cat((Rotation, prev_tform_all_train[str(i)][ :, 0:3, 3]),1)
 
-    return params
+#     return params

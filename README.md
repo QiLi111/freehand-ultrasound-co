@@ -5,8 +5,8 @@ This repository is the official implementation for "Nonrigid Reconstruction of F
 
 ## Install conda environment
 ``` bash
-conda env create -f environment.yml
-conda activate tracked-train
+conda create -n freehand-US python=3.9.13
+pip install -r requirements.txt
 ``` 
 
 ## Data
