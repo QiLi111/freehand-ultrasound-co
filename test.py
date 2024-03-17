@@ -151,7 +151,7 @@ for sub_fd in folders:
         
         metrics = np.concatenate((metric1, metric2, metric3, metric4,metric5, metric6), axis=0)
 
-        with open(os.getcwd()+'/'+test_folders+'/'+fd_name_save+'/'+sub_fd[29:] + '__' + str(model_name)+'_non_common.npy', 'wb') as f:
+        with open(os.getcwd()+'/'+test_folders+'/'+fd_name_save+'/'+sub_fd + '__' + str(model_name)+'.npy', 'wb') as f:
             np.save(f, metrics)
         
         
