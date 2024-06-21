@@ -1,5 +1,5 @@
 
-# Nonrigid Reconstruction of Freehand Ultrasound without a Tracker
+# Nonrigid Reconstruction of Freehand Ultrasound without a Tracker (MICCAI2024)
 
 This repository is the official implementation for "Nonrigid Reconstruction of Freehand Ultrasound without a Tracker". It contains algorithms for freehand ultrasound reocnstruction, simultaneously estimating rigid transformations among US frames and a nonrigid deformation, optimised by a regularised registration network.
 
@@ -11,7 +11,9 @@ pip install -r requirements.txt
 ``` 
 
 ## Data
-The data set used in this repository is sampled from the original data set used in the paper, and will be updated upon publication.
+The data set in this repository is sampled from the original data set used in the paper, for your reference.
+The complete data set is available [here](https://zenodo.org/doi/10.5281/zenodo.11178508), associated with the MICCAI Challenge 2024. We have reorganised the data set to provide a clearer data structure. For more information, please visit the [Challenge website](https://github-pages.ucl.ac.uk/tus-rec-challenge/). 
+
 
 The example data set is stored in a `.h5` file, including train (6 scans), val (2 scans), and test (2 scans) sets. The indices of samped scans are indicated by `.json` files. The following shows the data structure.
 ```

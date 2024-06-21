@@ -13,6 +13,8 @@ log/
 sh/
 data/prep_sep_back_forth*
 models_all/
+plot_scan_trajactory/
+plot_scan_traj*
 
 
 
